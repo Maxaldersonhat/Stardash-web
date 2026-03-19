@@ -9,16 +9,15 @@ const STAR_POSITIONS = [
 ];
 
 const Hero = () => (
-  <section className="relative overflow-hidden min-h-[70vh] w-full">
-    {/* Background image with opacity */}
-    <div 
+  // min-h-screen so it fills the full viewport including behind the nav
+  <section id="Hero" className="relative overflow-hidden min-h-screen w-full">
+    {/* Background image — covers entire section including nav area */}
+    <div
       className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundImage: `url('/src/assets/hero-bg.png')`,
-      }}
+      style={{ backgroundImage: `url('/src/assets/hero-bg.png')` }}
     >
-      {/* Opacity overlay */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-50/80 to-blue-100/80"></div>
+      {/* Dark gradient overlay so white nav text stays readable */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-blue-50/80" />
     </div>
 
     {/* Animated stars */}
@@ -26,36 +25,31 @@ const Hero = () => (
       <svg
         key={i}
         viewBox="0 0 24 24"
-        className="absolute w-8 h-8 text-blue-500 fill-current animate-bounce z-20 drop-shadow-lg"
+        className="absolute w-8 h-8 text-blue-300 fill-current animate-bounce z-20 drop-shadow-lg"
         style={star.style}
       >
         <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.62L12 2 9.19 8.62 2 9.24l5.46 4.73L5.82 21z" />
       </svg>
     ))}
 
-    {/* Centered hero content */}
-    <div className="relative z-10 max-w-3xl mx-auto text-center px-4 sm:px-6 lg:px-0 py-16 sm:py-20 lg:py-24 min-h-[70vh] flex flex-col justify-center">
+    {/* Hero content — pt-28 so it clears the nav height */}
+    <div className="relative z-10 max-w-3xl mx-auto text-center px-4 sm:px-6 pt-28 pb-24 min-h-screen flex flex-col justify-center">
       <div>
-        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-tight">
-          Shine Every Corner<br/>
-          <span className="text-blue-600">with Stardash</span>
+        <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-tight drop-shadow-lg">
+        Proffessional Cleaning Services <br />
+          <span className="text-blue-300">You Can Trust</span>
         </h1>
-        <p className="mt-4 text-xl sm:text-2xl text-gray-700">
-          Premium cleaning services — Nairobi-wide.
+        <p className="mt-4 text-xl sm:text-2xl text-white/80 drop-shadow">
+         Reliable, affordable cleaning for homes and businesses in Nairobi.
         </p>
         <div className="mt-8 flex flex-col justify-center items-center gap-4">
-          {/* Primary CTA */}
-          <button className="px-6 py-3 rounded-full bg-blue-600 text-white font-medium transform transition duration-200 ease-out hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500 animate-pulse">
-            Book Now
-          </button>
-          {/* Secondary CTA */}
-          <div className="px-6 py-3 text-blue-600 font-medium transform transition duration-200 ease-out hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 border-b-2 border-blue-600 animate-pulse">
+          <div className="px-6 py-3 text-white font-medium border-b-2 border-white/60 animate-pulse cursor-pointer hover:border-white transition">
             See All Services
           </div>
         </div>
-        {/* Down‐arrow bounce */}
+        {/* Down-arrow bounce */}
         <div className="mt-12">
-          <span className="block w-1 h-8 mx-auto bg-blue-300 animate-bounce rounded"></span>
+          <span className="block w-1 h-8 mx-auto bg-white/40 animate-bounce rounded" />
         </div>
       </div>
     </div>

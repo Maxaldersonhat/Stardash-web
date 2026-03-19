@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaHome, FaBuilding, FaMagic } from 'react-icons/fa';
-import './ServicesSection.css'; // ← our little flip‐CSS
+import './ServicesSection.css'; 
 
 const services = [
   {
@@ -64,7 +64,7 @@ export default function ServicesSection() {
               hover:-translate-y-2 hover:scale-105 hover:shadow-2xl
             "
           >
-            {/* icon wrapper: keep Tailwind for colors & spacing, CSS handles perspective */}
+            
             <div className="icon-wrapper bg-blue-50 rounded-full p-4 inline-block mb-4">
               <div className="icon-inner">
                 <Icon

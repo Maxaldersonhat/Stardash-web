@@ -4,7 +4,6 @@ import HowItWorksSection from '../components/HowItWorksSection';
 import TestimonialCarousel from '../components/TestimonialCarousel';
 import WhyChooseSection from '../components/WhyChooseSection';
 import StatsSection      from '../components/StatsSection';
-import CTASection        from '../components/CTASection';
 import QuoteSection      from '../components/QuoteSection';
 import Footer            from '../components/Footer';
 
@@ -25,7 +24,7 @@ const Home = () => (
       </div>
       <WhyChooseSection />
       <StatsSection />
-      <CTASection />
+      
       <div id="QuoteSection">
         <QuoteSection />
       </div>

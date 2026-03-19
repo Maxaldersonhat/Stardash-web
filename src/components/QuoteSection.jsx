@@ -1,8 +1,9 @@
 import React from 'react';
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock } from 'react-icons/fa';
 
 export default function QuoteSection() {
   return (
-    <section className="py-16 bg-white">
+    <section id="QuoteSection" className="py-16 bg-white">
       <div className="max-w-6xl mx-auto px-4 text-center mb-8">
         <h2 className="text-4xl font-bold">
           Get Your <span className="text-blue-600">Free Quote</span>
@@ -43,33 +44,32 @@ export default function QuoteSection() {
 
         {/* Contact Info + Map */}
         <div className="space-y-6">
-          {/* Contact Info */}
           <div className="bg-white shadow-lg rounded-2xl p-6 space-y-4">
             <h3 className="text-xl font-semibold">Contact Information</h3>
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
-                <span className="text-blue-600 text-xl">📞</span>
+                <FaPhone className="text-blue-600 text-xl mt-1 shrink-0 rotate-90" />
                 <div>
                   <div className="font-medium">Phone</div>
                   <div className="text-gray-600">+254 716 533 478</div>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
-                <span className="text-blue-600 text-xl">✉️</span>
+                <FaEnvelope className="text-blue-600 text-xl mt-1 shrink-0" />
                 <div>
                   <div className="font-medium">Email</div>
                   <div className="text-gray-600">info@stardash.co.ke</div>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
-                <span className="text-blue-600 text-xl">📍</span>
+                <FaMapMarkerAlt className="text-blue-600 text-xl mt-1 shrink-0" />
                 <div>
                   <div className="font-medium">Service Area</div>
                   <div className="text-gray-600">Nairobi County</div>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
-                <span className="text-blue-600 text-xl">⏰</span>
+                <FaClock className="text-blue-600 text-xl mt-1 shrink-0" />
                 <div>
                   <div className="font-medium">Business Hours</div>
                   <div className="text-gray-600">
@@ -81,19 +81,18 @@ export default function QuoteSection() {
             </div>
           </div>
 
-          
-        <div className="rounded-2xl overflow-hidden">
-        <iframe
-        title="NextGen Mall Map"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1994.9543830318938!2d36.83542651619911!3d-1.3117402020219019!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f113bd5f56505%3A0x6fffc207fcd80c1a!2sNextgen%20Mall!5e0!3m2!1sen!2ske!4v1629090783911!5m2!1sen!2ske"
-        width="100%"
-        height="300"
-        allowFullScreen=""
-        loading="lazy"
-        className="border-0 w-full h-48"
-        ></iframe>
-        </div>
-
+          {/* Map */}
+          <div className="rounded-2xl overflow-hidden">
+            <iframe
+              title="NextGen Mall Map"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1994.9543830318938!2d36.83542651619911!3d-1.3117402020219019!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f113bd5f56505%3A0x6fffc207fcd80c1a!2sNextgen%20Mall!5e0!3m2!1sen!2ske!4v1629090783911!5m2!1sen!2ske"
+              width="100%"
+              height="300"
+              allowFullScreen=""
+              loading="lazy"
+              className="border-0 w-full h-48"
+            />
+          </div>
         </div>
       </div>
     </section>

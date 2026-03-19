@@ -5,6 +5,14 @@ import Home from "./pages/Home.jsx";
 import HomeCleaning from "./pages/HomeCleaning.jsx";
 import OfficeCleaning from "./pages/OfficeCleaning.jsx";
 
+const NAV_LINKS = [
+  { label: "Home",         sectionId: "Hero" },
+  { label: "Services",     sectionId: "ServicesSection" },
+  { label: "How it works", sectionId: "HowItWorksSection" },
+  { label: "Testimonials", sectionId: "TestimonialCarousel" },
+  { label: "Contact",      sectionId: "QuoteSection" },
+];
+
 const App = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -14,7 +22,7 @@ const App = () => {
   const hideMainLayout = location.pathname === "/editor";
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 30);
+    const onScroll = () => setIsScrolled(window.scrollY > 60);
     const onResize = () => {
       if (window.innerWidth >= 1024) setIsMobileMenuOpen(false);
     };
@@ -26,46 +34,32 @@ const App = () => {
     };
   }, []);
 
-  const toggleMobileMenu = () => setIsMobileMenuOpen((v) => !v);
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
-  // Function to handle navigation - either scroll to section or navigate to page
-  const handleNavigation = (path, sectionId = null) => {
-    if (location.pathname === "/" && sectionId) {
-      // If we're on home page and have a section ID, scroll to it
-      const element = document.getElementById(sectionId);
-      if (element) {
-        element.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
-    } else if (sectionId) {
-      // If we're not on home page but need to go to a section, navigate to home first
-      navigate("/");
-      // Wait for navigation to complete, then scroll
-      setTimeout(() => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          element.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
-        }
-      }, 100);
-    } else {
-      // Regular navigation to different pages
-      navigate(path);
-    }
-    closeMobileMenu();
+  const scrollToSection = (sectionId) => {
+    const el = document.getElementById(sectionId);
+    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  const btnBase = `
-    px-3 py-2 font-medium rounded-lg
-    bg-transparent
-    transform transition duration-200 ease-out
-    focus:outline-none focus:ring-2 focus:ring-blue-500
-  `;
+  const handleNavigation = (sectionId = null) => {
+    closeMobileMenu();
+    if (!sectionId) {
+      navigate("/");
+      return;
+    }
+    if (location.pathname === "/") {
+      scrollToSection(sectionId);
+    } else {
+      navigate("/");
+      setTimeout(() => scrollToSection(sectionId), 150);
+    }
+  };
+
+  const logoBtn =
+    "flex items-center bg-transparent border-none outline-none focus:outline-none focus:ring-0 p-0";
+
+  const btnBase =
+    "px-3 py-2 text-base font-medium rounded-lg border-none outline-none focus:outline-none transition duration-200 ease-out";
 
   return (
     <div className="app min-h-screen">
@@ -74,112 +68,90 @@ const App = () => {
           {/* HEADER */}
           <header className="fixed top-0 left-0 right-0 z-50">
             <nav
-              className={`
-              transition-all duration-500 ease-in-out
-              px-6 py-4
-              ${
+              className={`transition-all duration-500 ease-in-out px-6 py-7 ${
                 isScrolled
+                  
                   ? "mt-4 mx-auto max-w-6xl bg-white/95 backdrop-blur-lg shadow-lg border border-gray-200 rounded-2xl"
-                  : "w-full bg-white shadow-sm border-b border-gray-100"
-              }
-            `}
+                  
+                  : "w-full bg-transparent border-b border-transparent"
+              }`}
             >
               <div className="max-w-6xl mx-auto flex items-center justify-between">
-                <button
-                  onClick={() => handleNavigation("/")}
-                  className="flex items-center"
-                >
-                  <img className="h-10 w-20" src={logo} alt="App Logo" />
+                {/* Logo */}
+                <button onClick={() => handleNavigation()} className={logoBtn}>
+                  <img
+                    className="h-10 w-90 object-contain"
+                    src={logo}
+                    alt="Stardash Logo"
+                  />
                 </button>
 
+                {/* Desktop nav */}
                 <div className="hidden lg:flex flex-grow justify-center space-x-8">
-                  {[
-                    { path: "/", label: "Home", sectionId: "Hero" },
-                    {
-                      path: "/",
-                      label: "Services",
-                      sectionId: "ServicesSection",
-                    },
-                    {
-                      path: "/",
-                      label: "How it works",
-                      sectionId: "HowItWorksSection",
-                    },
-                    {
-                      path: "/",
-                      label: "Testimonials",
-                      sectionId: "TestimonialCarousel",
-                    },
-                    { path: "/", label: "Contact", sectionId: "QuoteSection" },
-                  ].map(({ path, label, sectionId }) => (
+                  {NAV_LINKS.map(({ label, sectionId }) => (
                     <button
                       key={sectionId}
-                      onClick={() => handleNavigation(path, sectionId)}
-                      className={`${btnBase} hover:-translate-y-0.5 hover:scale-105 hover:bg-blue-100 hover:text-blue-600`}
+                      onClick={() => handleNavigation(sectionId)}
+                      className={`${btnBase} bg-transparent hover:-translate-y-0.5 hover:scale-105 ${
+                        isScrolled
+                          ? "text-gray-900 hover:bg-blue-100 hover:text-blue-600"
+                          : "text-white drop-shadow hover:bg-white/20"
+                      }`}
                     >
                       {label}
                     </button>
                   ))}
                 </div>
 
+                {/* Desktop CTA */}
                 <div className="hidden lg:flex">
                   <button
-                    onClick={() => handleNavigation("/", "QuoteSection")}
-                    className="px-4 py-2 font-medium rounded-lg bg-blue-600 text-white transform transition duration-200 ease-out hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    onClick={() => handleNavigation("QuoteSection")}
+                    className={`${btnBase} hover:scale-105 active:scale-95 ${
+                      isScrolled
+                        ? "bg-blue-600 text-white hover:bg-blue-700"
+                        : "bg-white text-blue-600 hover:bg-blue-50 shadow"
+                    }`}
                   >
                     Get a Free Quote
                   </button>
                 </div>
 
+                {/* Hamburger */}
                 <div className="lg:hidden">
                   <button
-                    onClick={toggleMobileMenu}
+                    onClick={() => setIsMobileMenuOpen((v) => !v)}
                     aria-label="Toggle menu"
-                    className={`
-                      p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition
-                      ${
-                        isMobileMenuOpen
-                          ? "text-blue-600 bg-blue-50"
-                          : "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
-                      }
-                    `}
+                    className={`p-2 rounded-lg focus:outline-none transition ${
+                      isMobileMenuOpen
+                        ? "text-blue-600 bg-blue-50"
+                        : isScrolled
+                        ? "text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+                        : "text-white hover:bg-white/20"
+                    }`}
                   >
-                    {isMobileMenuOpen ? "X" : "≡"}
+                    {isMobileMenuOpen ? "✕" : "☰"}
                   </button>
                 </div>
               </div>
 
+              {/* Mobile menu — always solid white so it's readable regardless of hero */}
               {isMobileMenuOpen && (
-                <div className="lg:hidden mt-2 px-6 pb-4 space-y-2 border-t border-gray-200 animate-slide-down">
-                  {[
-                    { path: "/", label: "Home", sectionId: "hero" },
-                    { path: "/homecleaning", label: "Home Cleaning" }, // This stays as separate page
-                    { path: "/", label: "Services", sectionId: "services" },
-                    {
-                      path: "/",
-                      label: "How it works",
-                      sectionId: "how-it-works",
-                    },
-                    {
-                      path: "/",
-                      label: "Testimonials",
-                      sectionId: "testimonials",
-                    },
-                    { path: "/", label: "Contact", sectionId: "contact" },
-                  ].map(({ path, label, sectionId }) => (
+                <div className="lg:hidden mt-2 px-6 pb-4 space-y-2 border-t border-white/20 bg-white/95 backdrop-blur-lg rounded-2xl animate-slide-down">
+                  {NAV_LINKS.map(({ label, sectionId }) => (
                     <button
-                      key={sectionId || path}
-                      onClick={() => handleNavigation(path, sectionId)}
-                      className="block w-full text-left px-3 py-2 rounded-lg bg-transparent transform transition duration-200 ease-out hover:bg-blue-100 hover:text-blue-600"
+                      key={sectionId}
+                      onClick={() => handleNavigation(sectionId)}
+                      className={`${btnBase} w-full text-left text-gray-700 bg-transparent hover:bg-blue-100 hover:text-blue-600`}
                     >
                       {label}
                     </button>
                   ))}
                   <button
-                    onClick={() => handleNavigation("/", "contact")}
-                    className="block w-full text-left px-3 py-2 bg-blue-600 text-white rounded-lg transform transition duration-200 ease-out hover:bg-blue-700"
+                    onClick={() => handleNavigation("QuoteSection")}
+                    className={`${btnBase} w-full text-left bg-blue-600 text-white hover:bg-blue-700`}
                   >
-                    Get a quote
+                    Get a Free Quote
                   </button>
                 </div>
               )}
@@ -191,7 +163,7 @@ const App = () => {
             href="https://wa.me/254716533478?text=Hi%2C%20I%20need%20help%20with%20your%20services"
             target="_blank"
             rel="noopener noreferrer"
-            className="fixed z-50 bottom-6 right-6 flex items-center space-x-2 bg-green-500 text-white px-4 py-3 rounded-full shadow-lg transition-all duration-300 animate- first-letter:bounce hover:animate-pulse group"
+            className="fixed z-50 bottom-6 right-6 flex items-center space-x-2 bg-green-500 text-white px-4 py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-green-600 group"
           >
             <svg
               className="w-6 h-6 fill-current"
@@ -205,13 +177,12 @@ const App = () => {
             </span>
           </a>
 
-          {/* ROUTED PAGES */}
-          <main className="pt-24">
+          {/* ROUTES — no pt-24, hero bleeds up behind the transparent nav */}
+          <main>
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/homecleaning" element={<HomeCleaning />} />
               <Route path="/OfficeCleaning" element={<OfficeCleaning />} />
-              {/* Add other routes here if needed */}
             </Routes>
           </main>
         </>

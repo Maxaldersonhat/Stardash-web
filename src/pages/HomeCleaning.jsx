@@ -30,7 +30,7 @@ const HomeCleaning = () => {
   const handleOpenModal = (pkgTitle) => {
     setSelectedPackage(pkgTitle);
     setModalOpen(true);
-    document.body.style.overflow = 'hidden'; // Prevent background scroll
+    document.body.style.overflow = 'hidden'; 
   };
 
   const handleCloseModal = () => {
