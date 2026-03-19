@@ -1,4 +1,5 @@
 import React from 'react';
+import heroBg from "../assets/hero-bg.png";
 
 const STAR_POSITIONS = [
   { style: { top: '10%', left: '15%', animationDelay: '0s' } },
@@ -9,14 +10,11 @@ const STAR_POSITIONS = [
 ];
 
 const Hero = () => (
-  // min-h-screen so it fills the full viewport including behind the nav
   <section id="Hero" className="relative overflow-hidden min-h-screen w-full">
-    {/* Background image — covers entire section including nav area */}
     <div
       className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: `url('/src/assets/hero-bg.png')` }}
+      style={{ backgroundImage: `url(${heroBg})` }}
     >
-      {/* Dark gradient overlay so white nav text stays readable */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-blue-50/80" />
     </div>
 
