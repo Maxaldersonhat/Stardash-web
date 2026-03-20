@@ -1,20 +1,4 @@
-<<<<<<< HEAD
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-=======
-
 # Stardash Cleaning Company Website
-
 Welcome to the official website for **Stardash Cleaning Company**, a modern cleaning service provider offering basic and deep cleaning solutions. This web application showcases our services, pricing, and contact information in a clean, user-friendly interface.
 
 ## 🧼 About the Project
@@ -37,55 +21,34 @@ This is a responsive single-page React application built to represent the Starda
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Vite](https://vitejs.dev/) or Create React App (whichever you're using)
 
-## 📁 Folder Structure
+## Folder Structure
 
-stardash-cleaning/
-├── public/
-├── src/
-│ ├── assets/
-│ ├── components/
-│ ├── pages/
-│ ├── App.jsx
-│ └── main.jsx
-├── .gitignore
-├── package.json
-└── README.md
+- `public/` static assets
+- `src/components/` reusable UI sections
+- `src/pages/` route-level pages
+- `src/assets/` images and other static assets
+- `src/App.jsx` app routes
+- `src/main.jsx` React bootstrap
+- `index.html` Vite entry HTML
 
-bash
-Copy
-Edit
+## Installation
 
-## 📦 Installation
+1. Install dependencies:
 
-1. Clone the repository:
+```bash
+npm ci
+```
 
-   ```bash
-   git clone https://github.com/your-username/stardash-cleaning.git
-   cd stardash-cleaning
-Install dependencies:
+2. Start the development server:
 
-bash
-Copy
-Edit
-npm install
-Run the development server:
-
-bash
-Copy
-Edit
+```bash
 npm run dev
+```
 
-🧪 Coming Soon
-Booking system with date & time selection
+Open `http://localhost:5173` in your browser.
 
-Service area map
+## Contact
 
-Admin dashboard (optional)
-
-📞 Contact
-Have questions or feedback? Reach us at:
-
-📧 contact@stardashcleaning.com
-📍 Nairobi, Kenya
-
->>>>>>> c010df5513c15d1a5dc58d359265a79f3f69b769
+- Phone: `+254 716 533 478`
+- Email: `info@stardash.co.ke`
+- Location: `Nairobi County, Kenya`
