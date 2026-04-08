@@ -4,10 +4,15 @@
   text-align: center;
 }
 
+.services-header {
+  max-width: 640px;
+  margin: 0 auto 3rem;
+}
+
 .services-header h2 {
   font-size: 2.5rem;
   font-weight: 700;
-  margin: 0;
+  margin: 0 0 0.5rem;
 }
 
 .services-header .highlight {
@@ -15,78 +20,104 @@
 }
 
 .services-header p {
-  margin-top: 0.5rem;
   color: #555;
   font-size: 1rem;
+  margin: 0;
 }
 
+/* ── Grid ── */
 .services-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 2rem;
-  margin-top: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
+/* ── Card ── */
 .service-card {
   background: #fff;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   padding: 2rem 1.5rem;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
   text-align: left;
+  display: flex;
+  flex-direction: column;
+  perspective: 800px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+.service-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* ── Icon wrapper ── */
 .icon-wrapper {
-  width: 3rem;
-  height: 3rem;
-  margin-bottom: 1rem;
+  width: 3.25rem;
+  height: 3.25rem;
+  margin-bottom: 1.25rem;
   background: #e6f0ff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
-.icon-wrapper svg {
-  color: #007bff;
-  width: 1.5rem;
-  height: 1.5rem;
-}
-
-.service-card h3 {
-  margin: 0 0 0.5rem;
-  font-size: 1.25rem;
-}
-
-.service-card p {
-  margin: 0 0 1rem;
-  color: #555;
-  font-size: 0.95rem;
-}
-
-.service-card ul {
-  list-style: disc;
-  padding-left: 1.25rem;
-  margin: 0;
-  color: #333;
-  font-size: 0.9rem;
-}
-
-.service-card ul li::marker {
-  color: #007bff;
-}
-
-.service-card {
-  perspective: 800px;
-}
-
-
+/* ── Icon inner (3D flip container) ── */
 .icon-inner {
   transform-style: preserve-3d;
   transition: transform 0.5s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
 
 .service-card:hover .icon-inner {
   transform: rotateY(180deg);
 }
 
+/* ── SVG icon — edit size & color here ── */
+.service-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #007bff;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+  color: #0056d6;
+}
+
+/* ── Text ── */
+.service-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1a1a2e;
+}
+
+.service-card > p {
+  margin: 0 0 1rem;
+  color: #555;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  flex: 0;
+}
+
+/* ── Feature list ── */
+.service-card ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin: 0;
+  color: #333;
+  font-size: 0.875rem;
+  line-height: 1.8;
+  flex: 1;
+}
+
+.service-card ul li::marker {
+  color: #007bff;
+}

@@ -12,7 +12,7 @@ const steps = [
     icon: FaLaptop,
     title: 'Book Online',
     description:
-      'Schedule your cleaning service through our easy online booking system or give us a call.',
+      'Schedule your cleaning service through our easy online booking bot or give us a call.',
   },
   {
     icon: FaClock,

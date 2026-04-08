@@ -8,7 +8,7 @@ export default function QuoteSection() {
         <h2 className="text-4xl font-bold">
           Get Your <span className="text-blue-600">Free Quote</span>
         </h2>
-        <p className="text-gray-600 mt-2">Questions? We're here to help—reach out anytime!</p>
+        <p className="text-gray-600 mt-2">Questions? We're here to help</p>
       </div>
 
       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -51,7 +51,7 @@ export default function QuoteSection() {
                 <FaPhone className="text-blue-600 text-xl mt-1 shrink-0 rotate-90" />
                 <div>
                   <div className="font-medium">Phone</div>
-                  <div className="text-gray-600">+254 716 533 478</div>
+                  <div className="text-gray-600">+254 723 531 085</div>
                 </div>
               </div>
               <div className="flex items-start space-x-3">
