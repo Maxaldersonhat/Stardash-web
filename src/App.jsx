@@ -4,6 +4,7 @@ import logo from "./assets/logo.png";
 import Home from "./pages/Home.jsx";
 import HomeCleaning from "./pages/HomeCleaning.jsx";
 import OfficeCleaning from "./pages/OfficeCleaning.jsx";
+import BookingBot from './components/BookingBot.jsx';
 
 const NAV_LINKS = [
   { label: "Home",         sectionId: "Hero" },
@@ -160,7 +161,7 @@ const App = () => {
 
           {/* WhatsApp Floating Button */}
           <a
-            href="https://wa.me/254716533478?text=Hi%2C%20I%20need%20help%20with%20your%20services"
+            href="https://wa.me/254723531085?text=Hi%2C%20I%20need%20help%20with%20your%20services"
             target="_blank"
             rel="noopener noreferrer"
             className="fixed z-50 bottom-6 right-6 flex items-center space-x-2 bg-green-500 text-white px-4 py-3 rounded-full shadow-lg transition-all duration-300 hover:bg-green-600 group"
@@ -185,6 +186,7 @@ const App = () => {
               <Route path="/OfficeCleaning" element={<OfficeCleaning />} />
             </Routes>
           </main>
+          <BookingBot />
         </>
       )}
     </div>
