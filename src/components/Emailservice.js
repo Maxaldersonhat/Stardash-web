@@ -10,6 +10,7 @@ import emailjs from '@emailjs/browser';
 const SERVICE_ID  = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 const PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+const RECIPIENT = 'tech@stardash.co.ke';
 
 /**
  * @param {Record<string, string>} answers
@@ -18,6 +19,7 @@ const PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 export async function sendBookingEmail(answers) {
   const templateParams = {
     ...answers,
+    to_email: RECIPIENT,
     booking_summary: Object.entries(answers)
       .map(([k, v]) => `${k.toUpperCase()}: ${v}`)
       .join('\n'),
