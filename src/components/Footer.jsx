@@ -46,22 +46,16 @@ export default function Footer() {
             across Nairobi with eco-friendly products and guaranteed satisfaction.
           </p>
           <div className="flex space-x-3">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
+            <a href="https://www.facebook.com/profile.php?id=100091431764954" target="_blank" rel="noopener noreferrer"
               className="w-8 h-8 rounded-full bg-blue-800 flex items-center justify-center hover:bg-blue-600 transition">
               <FaFacebookF className="w-3.5 h-3.5" />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
-              className="w-8 h-8 rounded-full bg-blue-800 flex items-center justify-center hover:bg-blue-600 transition">
-              <FaTwitter className="w-3.5 h-3.5" />
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+            
+            <a href="https://www.instagram.com/stardash_cleaning/" target="_blank" rel="noopener noreferrer"
               className="w-8 h-8 rounded-full bg-blue-800 flex items-center justify-center hover:bg-blue-600 transition">
               <FaInstagram className="w-3.5 h-3.5" />
             </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"
-              className="w-8 h-8 rounded-full bg-blue-800 flex items-center justify-center hover:bg-blue-600 transition">
-              <FaLinkedinIn className="w-3.5 h-3.5" />
-            </a>
+            
           </div>
         </div>
 
